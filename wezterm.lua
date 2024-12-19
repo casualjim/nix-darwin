@@ -28,30 +28,30 @@ config.scrollback_lines = 350000
 
 config.keys = {
   -- Split pane
-  {key='D', mods='CMD', action=wezterm.action.SplitHorizontal{domain='CurrentPaneDomain'}},
-  {key='d', mods='CMD|SHIFT', action=wezterm.action.SplitVertical{domain='CurrentPaneDomain'}},
-  {key='w', mods='CMD', action=wezterm.action.CloseCurrentPane{confirm=false}},
+  {key='d', mods='CMD', action=act.SplitHorizontal{domain='CurrentPaneDomain'}},
+  {key='D', mods='CMD|SHIFT', action=act.SplitVertical{domain='CurrentPaneDomain'}},
+  {key='w', mods='CMD', action=act.CloseCurrentPane{confirm=false}},
 
   -- Pane navigation
-  {key='LeftArrow', mods='CMD|ALT', action=wezterm.action.ActivatePaneDirection('Left')},
-  {key='RightArrow', mods='CMD|ALT', action=wezterm.action.ActivatePaneDirection('Right')},
-  {key='UpArrow', mods='CMD|ALT', action=wezterm.action.ActivatePaneDirection('Up')},
-  {key='DownArrow', mods='CMD|ALT', action=wezterm.action.ActivatePaneDirection('Down')},
+  {key='LeftArrow', mods='CMD|ALT', action=act.ActivatePaneDirection('Left')},
+  {key='RightArrow', mods='CMD|ALT', action=act.ActivatePaneDirection('Right')},
+  {key='UpArrow', mods='CMD|ALT', action=act.ActivatePaneDirection('Up')},
+  {key='DownArrow', mods='CMD|ALT', action=act.ActivatePaneDirection('Down')},
 
   -- Pane resizing
-  {key='LeftArrow', mods='ALT|SHIFT', action=wezterm.action.AdjustPaneSize{'Left', 1}},
-  {key='RightArrow', mods='ALT|SHIFT', action=wezterm.action.AdjustPaneSize{'Right', 1}},
-  {key='UpArrow', mods='ALT|SHIFT', action=wezterm.action.AdjustPaneSize{'Up', 1}},
-  {key='DownArrow', mods='ALT|SHIFT', action=wezterm.action.AdjustPaneSize{'Down', 1}},
+  {key='LeftArrow', mods='ALT|SHIFT', action=act.AdjustPaneSize{'Left', 1}},
+  {key='RightArrow', mods='ALT|SHIFT', action=act.AdjustPaneSize{'Right', 1}},
+  {key='UpArrow', mods='ALT|SHIFT', action=act.AdjustPaneSize{'Up', 1}},
+  {key='DownArrow', mods='ALT|SHIFT', action=act.AdjustPaneSize{'Down', 1}},
 
   -- Tab navigation
-  {key='RightArrow', mods='CMD', action=wezterm.action.ActivateTabRelative(1)},
-  {key='LeftArrow', mods='CMD', action=wezterm.action.ActivateTabRelative(-1)},
+  {key='RightArrow', mods='CMD', action=act.ActivateTabRelative(1)},
+  {key='LeftArrow', mods='CMD', action=act.ActivateTabRelative(-1)},
 
   -- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word
-  {key="LeftArrow", mods="ALT", action=wezterm.action{SendString="\x1bb"}},
+  {key="LeftArrow", mods="ALT", action=act{SendString="\x1bb"}},
   -- Make Option-Right equivalent to Alt-f; forward-word
-  {key="RightArrow", mods="ALT", action=wezterm.action{SendString="\x1bf"}},
+  {key="RightArrow", mods="ALT", action=act{SendString="\x1bf"}},
 
   -- Clears the scrollback and viewport, and then sends CTRL-L to ask the
   -- shell to redraw its prompt
