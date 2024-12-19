@@ -28,8 +28,8 @@ config.scrollback_lines = 350000
 
 config.keys = {
   -- Split pane
-  {key='D', mods='CMD|SHIFT', action=wezterm.action.SplitHorizontal{domain='CurrentPaneDomain'}},
-  {key='d', mods='CMD', action=wezterm.action.SplitVertical{domain='CurrentPaneDomain'}},
+  {key='D', mods='CMD', action=wezterm.action.SplitHorizontal{domain='CurrentPaneDomain'}},
+  {key='d', mods='CMD|SHIFT', action=wezterm.action.SplitVertical{domain='CurrentPaneDomain'}},
   {key='w', mods='CMD', action=wezterm.action.CloseCurrentPane{confirm=false}},
 
   -- Pane navigation
