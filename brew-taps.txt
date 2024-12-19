@@ -1,0 +1,14 @@
+bufbuild/buf
+chipmk/tap
+felixkratz/formulae
+filosottile/musl-cross
+golangci/tap
+goreleaser/tap
+homebrew/bundle
+homebrew/services
+humanlogio/tap
+kyoh86/tap
+netbirdio/tap
+temporalio/brew
+th-ch/youtube-music
+yoheimuta/protolint
