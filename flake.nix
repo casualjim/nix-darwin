@@ -37,6 +37,7 @@
             pkgs.zsh
             pkgs.nil
             pkgs.nixd
+            pkgs.direnv
           ];
 
           # Necessary for using flakes on this system.
@@ -98,7 +99,7 @@
               directory = {
                 style = "bold lavender";
                 read_only = " ";
-                format = "\\[[$path]($style)[$read_only]($read_only_style)\\]";
+                format = "\\[[$path]($style)[$read_only]($read_only_style)\\] ";
               };
 
               aws.format = "\\[[$symbol($profile)(\\($region\\))(\\[$duration\\])]($style)\\]";
@@ -247,6 +248,10 @@
 
             initExtra = ''
               cat() { bat --paging never --plain --plain "$@" }
+
+              if [ $commands[direnv] ]; then
+                eval "$(direnv hook zsh)"
+              fi
 
               if [ $commands[hub] ]; then
                 eval "$(hub alias -s)"
