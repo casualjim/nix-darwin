@@ -42,50 +42,50 @@
           ];
 
           homebrew = {
-              enable = true;
-              # onActivation.cleanup = "uninstall";
+            enable = true;
+            # onActivation.cleanup = "uninstall";
 
-              taps = [
-                "bufbuild/buf"
-                "felixkratz/formulae"
-                "filosottile/musl-cross"
-                "golangci/tap"
-                "goreleaser/tap"
-                "humanlogio/tap"
-                "kyoh86/tap"
-                "netbirdio/tap"
-                "temporalio/brew"
-                "th-ch/youtube-music"
-                "yoheimuta/protolint"
-              ];
-              brews = [];
-              casks = [
-                "appflowy"
-                "brave-browser"
-                "discord"
-                "docker"
-                "dropbox"
-                "font-cascadia-code"
-                "font-cascadia-mono"
-                "font-caskaydia-cove-nerd-font"
-                "font-hack-nerd-font"
-                "inkscape"
-                "ledger-live"
-                "macfuse"
-                "neohtop"
-                "netbird-ui"
-                "signal"
-                "skype"
-                "telegram-desktop"
-                "tuple"
-                "utm"
-                "visual-studio-code"
-                "wezterm"
-                "whatsapp"
-                "youtube-music"
-                "yubico-authenticator"
-                "yubico-yubikey-manager"
-              ];
+            taps = [
+              "bufbuild/buf"
+              "felixkratz/formulae"
+              "filosottile/musl-cross"
+              "golangci/tap"
+              "goreleaser/tap"
+              "humanlogio/tap"
+              "kyoh86/tap"
+              "netbirdio/tap"
+              "temporalio/brew"
+              "th-ch/youtube-music"
+              "yoheimuta/protolint"
+            ];
+            brews = [ ];
+            casks = [
+              "appflowy"
+              "brave-browser"
+              "discord"
+              "docker"
+              "dropbox"
+              "font-cascadia-code"
+              "font-cascadia-mono"
+              "font-caskaydia-cove-nerd-font"
+              "font-hack-nerd-font"
+              "inkscape"
+              "ledger-live"
+              "macfuse"
+              "neohtop"
+              "netbird-ui"
+              "signal"
+              "skype"
+              "telegram-desktop"
+              "tuple"
+              "utm"
+              "visual-studio-code"
+              "wezterm"
+              "whatsapp"
+              "youtube-music"
+              "yubico-authenticator"
+              "yubico-yubikey-manager"
+            ];
           };
 
           # Necessary for using flakes on this system.
@@ -304,6 +304,12 @@
               if [ $commands[hub] ]; then
                 eval "$(hub alias -s)"
               fi
+            '';
+
+            envExtra = ''
+              . "/etc/profiles/per-user/$USER/etc/profile.d/grc.sh"
+              . "$HOME/.cargo/env"
+              . "$HOME/.spinnaker-env.sh"
             '';
 
             historySubstringSearch = {
