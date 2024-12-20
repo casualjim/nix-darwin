@@ -294,7 +294,15 @@
               ping = "prettyping --nolegend";
             };
 
-            dotDir = ".config/zsh";
+
+            localVariables = {
+              ZSH_CACHE_DIR="$HOME/Library/Caches/antidote";
+            };
+
+            initExtraBeforeCompInit = ''
+              export ZSH_CACHE_DIR
+              [[ ! -d $HOME/Library/Caches/antidote/completions ]] && mkdir -p $ZSH_CACHE_DIR/completions
+            '';
 
             initExtra = ''
               cat() { bat --paging never --plain --plain "$@" }
@@ -311,7 +319,6 @@
             envExtra = ''
               . "/etc/profiles/per-user/$USER/etc/profile.d/grc.sh"
               . "$HOME/.cargo/env"
-              . "$HOME/.spinnaker-env.sh"
             '';
 
             historySubstringSearch = {
