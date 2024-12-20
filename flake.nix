@@ -294,6 +294,8 @@
               ping = "prettyping --nolegend";
             };
 
+            dotDir = ".config/zsh";
+
             initExtra = ''
               cat() { bat --paging never --plain --plain "$@" }
 
