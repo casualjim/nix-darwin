@@ -14,3 +14,19 @@ I basically followed this guide: [https://davi.sh/til/nix/nix-macos-setup/](http
 
 This will enable touchid for sudo and **keep it enabled**.
 This will also install devenv so you can use [https://devenv.sh/](https://devenv.sh/)
+
+## Resources
+
+Along the way I've found these resources very helpful:
+
+* [Original Thesis](https://edolstra.github.io/pubs/phd-thesis.pdf)
+* [Nix Pills](https://nixos.org/guides/nix-pills/)
+* [Zero To Nix](https://zero-to-nix.com/)
+* [Nix Language Basics](https://nix.dev/tutorials/nix-language)
+* [Nix Modules](https://nixos.wiki/wiki/NixOS_modules)
+* [NixOS Manual](https://nixos.org/manual/nixos/stable/)
+* [Home Manager Options](https://github.com/nix-community/home-manager/blob/master/doc/options.md)
+* [NixOS Options](https://nixos.org/manual/nixos/stable/options.html)
+* [NixOS Search](https://search.nixos.org/)
+* [NixOS Wiki](https://nixos.wiki/wiki/Home)
+* [NixOS Discourse](https://discourse.nixos.org/)
