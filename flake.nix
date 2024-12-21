@@ -132,11 +132,6 @@
           programs.home-manager.enable = true;
           programs.fastfetch.enable = true;
 
-          # programs.starship = (import ./starship.nix) // {
-          #   enable = true;
-          #   enableBashIntegration = true;
-          #   enableZshIntegration = true;
-          # };
           programs.starship = {
             enable = true;
             enableBashIntegration = true;
@@ -301,7 +296,12 @@
             FZF_DEFAULT_OPTS = "--ansi";
           };
 
-          home.file.".config/starship.toml".source = ./starship.toml;
+          home.file.".config/btop" = {
+            source = ./config/btop;
+            recursive = true;
+          };
+          home.file.".config/starship.toml".source = ./config/starship.toml;
+          home.file.".config/wezterm/wezterm.lua".source = ./config/wezterm/wezterm.lua;
         };
     in
     {
