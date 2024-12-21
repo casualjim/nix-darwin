@@ -27,6 +27,8 @@
       "font-cascadia-code"
       "font-cascadia-mono"
       "font-caskaydia-cove-nerd-font"
+      "font-monaspace"
+      "font-monaspace-nerd-font"
       "font-hack-nerd-font"
       "inkscape"
       "ledger-live"

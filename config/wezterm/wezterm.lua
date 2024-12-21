@@ -13,10 +13,10 @@ local config = wezterm.config_builder()
 
 config.color_scheme = 'Catppuccin Mocha'
 config.font = wezterm.font {
-  family = 'CaskaydiaCove Nerd Font Mono'
+  family = 'Monaspace Neon'
 }
   
-config.font_size = 14
+config.font_size = 13
 
 config.window_background_opacity = 0.80
 config.macos_window_background_blur = 30
