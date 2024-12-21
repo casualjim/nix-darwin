@@ -1,5 +1,5 @@
 {
-  description = "Example nix-darwin system flake";
+  description = "My nix-darwin flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -41,53 +41,6 @@
             pkgs.coreutils
           ];
 
-          homebrew = {
-            enable = true;
-            # onActivation.cleanup = "uninstall";
-
-            taps = [
-              "bufbuild/buf"
-              "felixkratz/formulae"
-              "filosottile/musl-cross"
-              "golangci/tap"
-              "goreleaser/tap"
-              "humanlogio/tap"
-              "kyoh86/tap"
-              "netbirdio/tap"
-              "temporalio/brew"
-              "th-ch/youtube-music"
-              "yoheimuta/protolint"
-            ];
-            brews = [ ];
-            casks = [
-              "appflowy"
-              "brave-browser"
-              "discord"
-              "docker"
-              "dropbox"
-              "font-cascadia-code"
-              "font-cascadia-mono"
-              "font-caskaydia-cove-nerd-font"
-              "font-hack-nerd-font"
-              "inkscape"
-              "ledger-live"
-              "macfuse"
-              "neohtop"
-              "netbird-ui"
-              "signal"
-              "skype"
-              "telegram-desktop"
-              "tuple"
-              "utm"
-              "visual-studio-code"
-              "wezterm"
-              "whatsapp"
-              "youtube-music"
-              "yubico-authenticator"
-              "yubico-yubikey-manager"
-            ];
-          };
-
           # Necessary for using flakes on this system.
           nix.settings.experimental-features = "nix-command flakes";
           nix.settings.trusted-users = [
@@ -111,7 +64,7 @@
           # The platform the configuration will be used on.
           nixpkgs.hostPlatform = "aarch64-darwin";
 
-          # imports = [ ./modules/descartes.nix ];
+          imports = [ ./localbrew.nix ];
 
           users.users.ivan = {
             name = "ivan";
@@ -132,130 +85,15 @@
           programs.home-manager.enable = true;
           programs.fastfetch.enable = true;
 
+          imports = [
+            ./zsh-config.nix
+            ./bat-config.nix
+          ];
+
           programs.starship = {
             enable = true;
             enableBashIntegration = true;
             enableZshIntegration = true;
-          };
-
-          programs.zsh = {
-            enable = true;
-            enableCompletion = true;
-            shellAliases = {
-              l = "eza -lh --icons --git";
-              ls = "eza --icons -G";
-              lsa = "eza --icons -lah --git";
-              ll = "eza --icons -lh --git";
-              la = "eza --icons -lah --git";
-              tree = "eza --tree --icons";
-              vim = "nvim";
-              ping = "prettyping --nolegend";
-            };
-
-            localVariables = {
-              ZSH_CACHE_DIR = "$HOME/Library/Caches/antidote";
-            };
-
-            initExtraBeforeCompInit = ''
-              export ZSH_CACHE_DIR
-              [[ ! -d $HOME/Library/Caches/antidote/completions ]] && mkdir -p $ZSH_CACHE_DIR/completions
-            '';
-
-            initExtra = ''
-              cat() { bat --paging never --plain --plain "$@" }
-
-              if [ $commands[direnv] ]; then
-                eval "$(direnv hook zsh)"
-              fi
-
-              if [ $commands[hub] ]; then
-                eval "$(hub alias -s)"
-              fi
-            '';
-
-            envExtra = ''
-              . "/etc/profiles/per-user/$USER/etc/profile.d/grc.sh"
-              . "$HOME/.cargo/env"
-            '';
-
-            historySubstringSearch = {
-              enable = true;
-            };
-            antidote = {
-              enable = true;
-              plugins = [
-                "zsh-users/zsh-completions"
-                "ohmyzsh/ohmyzsh path:lib"
-                "ohmyzsh/ohmyzsh path:plugins/git"
-                "ohmyzsh/ohmyzsh path:plugins/macos"
-                "ohmyzsh/ohmyzsh path:plugins/cp"
-                "ohmyzsh/ohmyzsh path:plugins/direnv"
-                "ohmyzsh/ohmyzsh path:plugins/ripgrep kind:fpath"
-                "ohmyzsh/ohmyzsh path:plugins/fd kind:fpath"
-                "ohmyzsh/ohmyzsh path:plugins/fzf"
-                "ohmyzsh/ohmyzsh path:plugins/mvn"
-                "ohmyzsh/ohmyzsh path:plugins/python"
-                "ohmyzsh/ohmyzsh path:plugins/pip"
-                "ohmyzsh/ohmyzsh path:plugins/node"
-                "ohmyzsh/ohmyzsh path:plugins/npm"
-                "ohmyzsh/ohmyzsh path:plugins/golang"
-                "ohmyzsh/ohmyzsh path:plugins/rust"
-                "ohmyzsh/ohmyzsh path:plugins/aws"
-                "ohmyzsh/ohmyzsh path:plugins/docker"
-                "ohmyzsh/ohmyzsh path:plugins/docker-compose"
-                "ohmyzsh/ohmyzsh path:plugins/kubectl"
-                "ohmyzsh/ohmyzsh path:plugins/minikube"
-                "ohmyzsh/ohmyzsh path:plugins/helm"
-                "zdharma-continuum/fast-syntax-highlighting kind:defer"
-                "zsh-users/zsh-history-substring-search"
-                "belak/zsh-utils path:completion"
-              ];
-            };
-          };
-
-          programs.bat = {
-            enable = true;
-            config = {
-              theme = "Catppuccin-mocha";
-            };
-            themes = {
-              Catppuccin-mocha = {
-                src = pkgs.fetchFromGitHub {
-                  owner = "catppuccin";
-                  repo = "bat";
-                  rev = "d2bbee4f7e7d5bac63c054e4d8eca57954b31471";
-                  hash = "sha256-x1yqPCWuoBSx/cI94eA+AWwhiSA42cLNUOFJl7qjhmw=";
-                };
-                file = "themes/Catppuccin Mocha.tmTheme";
-              };
-              Catppuccin-macchiato = {
-                src = pkgs.fetchFromGitHub {
-                  owner = "catppuccin";
-                  repo = "bat";
-                  rev = "d2bbee4f7e7d5bac63c054e4d8eca57954b31471";
-                  hash = "sha256-x1yqPCWuoBSx/cI94eA+AWwhiSA42cLNUOFJl7qjhmw=";
-                };
-                file = "themes/Catppuccin Macchiato.tmTheme";
-              };
-              Catppuccin-latte = {
-                src = pkgs.fetchFromGitHub {
-                  owner = "catppuccin";
-                  repo = "bat";
-                  rev = "d2bbee4f7e7d5bac63c054e4d8eca57954b31471";
-                  hash = "sha256-x1yqPCWuoBSx/cI94eA+AWwhiSA42cLNUOFJl7qjhmw=";
-                };
-                file = "themes/Catppuccin Latte.tmTheme";
-              };
-              Catppuccin-frappe = {
-                src = pkgs.fetchFromGitHub {
-                  owner = "catppuccin";
-                  repo = "bat";
-                  rev = "d2bbee4f7e7d5bac63c054e4d8eca57954b31471";
-                  hash = "sha256-x1yqPCWuoBSx/cI94eA+AWwhiSA42cLNUOFJl7qjhmw=";
-                };
-                file = "themes/Catppuccin Frappe.tmTheme";
-              };
-            };
           };
 
           home.packages = with pkgs; [
