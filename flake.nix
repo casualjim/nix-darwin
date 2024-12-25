@@ -176,7 +176,7 @@
       };
 
       homeConfigurations = {
-        sysiphus = home-manager.lib.homeManagerConfiguration {
+        ivan = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [
             commonConfiguration
