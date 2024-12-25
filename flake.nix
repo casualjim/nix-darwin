@@ -32,10 +32,7 @@
             "root"
             "ivan"
           ];
-          users.users.ivan = {
-            name = "ivan";
-            home = "/Users/ivan";
-          };
+          
           home-manager.backupFileExtension = "backup";
         };
 
@@ -47,6 +44,10 @@
           nixpkgs.hostPlatform = "aarch64-darwin";
           imports = [ ./localbrew.nix ];
           programs.zsh.enable = true;
+          users.users.ivan = {
+            name = "ivan";
+            home = "/Users/ivan";
+          };
         };
 
       linuxConfiguration =
@@ -54,6 +55,10 @@
         {
           system.stateVersion = "24.11";
           nixpkgs.hostPlatform = "x86_64-linux";
+          users.users.ivan = {
+            name = "ivan";
+            home = "/Users/ivan";
+          };
         };
 
       homeconfig =
@@ -108,6 +113,7 @@
             COLORTERM = "truecolor";
             TERM = "xterm-256color";
             JAVA_OPTS = "-Dfile.encoding=UTF-8";
+            GRC_ALIASES = "true";
             GCC_COLORS = "error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01";
             LANG = "en_US.utf-8";
             CLICOLOR = "1";
