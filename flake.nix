@@ -175,20 +175,24 @@
         ];
       };
 
-      nixosConfigurations."sysiphus" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          commonConfiguration
-          linuxConfiguration
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.users.ivan = homeconfig {
-              hostname = "sysiphus";
-              username = "ivan";
-              isDarwin = false;
-            };
-          }
-        ];
+      homeConfigurations = {
+        ivan = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = [
+            commonConfiguration
+            linuxConfiguration
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.verbose = true;
+              home-manager.users.ivan = homeconfig {
+                hostname = "sysiphus";
+                username = "ivan";
+                isDarwin = false;
+              };
+            }
+          ];
+        };
       };
     };
 }
