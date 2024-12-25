@@ -48,8 +48,8 @@
       [[ ! -d $HOME/Library/Caches/antidote/completions ]] && mkdir -p $ZSH_CACHE_DIR/completions
     '';
 
-    # . "/etc/profiles/per-user/${username}/etc/profile.d/grc.sh"
     initExtra = ''
+      . "${pkgs.grc}/etc/profile.d/grc.sh"
       
       cat() { bat --paging never --plain --plain "$@" }
 
@@ -101,7 +101,6 @@
         "zdharma-continuum/fast-syntax-highlighting kind:defer"
         "zsh-users/zsh-history-substring-search"
         "belak/zsh-utils path:completion"
-      ];
     };
   };
 }

@@ -57,7 +57,7 @@
           nixpkgs.hostPlatform = "x86_64-linux";
           users.users.ivan = {
             name = "ivan";
-            home = "/Users/ivan";
+            home = "/home/ivan";
           };
         };
 
