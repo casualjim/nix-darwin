@@ -36,6 +36,7 @@
             name = "ivan";
             home = "/Users/ivan";
           };
+          home-manager.backupFileExtension = "backup";
         };
 
       darwinConfiguration =
@@ -179,18 +180,18 @@
         ivan = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [
-            commonConfiguration
-            linuxConfiguration
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.verbose = true;
-              home-manager.users.ivan = homeconfig {
-                hostname = "sysiphus";
+              home = {
                 username = "ivan";
-                isDarwin = false;
+                homeDirectory = "/home/ivan";
+                stateVersion = "24.11";
               };
             }
+            (homeconfig {
+              hostname = "sysiphus";
+              username = "ivan";
+              isDarwin = false;
+            })
           ];
         };
       };
