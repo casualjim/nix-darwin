@@ -101,6 +101,7 @@
         "zdharma-continuum/fast-syntax-highlighting kind:defer"
         "zsh-users/zsh-history-substring-search"
         "belak/zsh-utils path:completion"
+      ];
     };
   };
 }
