@@ -1,22 +1,47 @@
+{ username, hostname }:
 { pkgs, config, ... }:
 {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    shellAliases = {
-      l = "eza -lh --icons --git";
-      ls = "eza --icons -G";
-      lsa = "eza --icons -lah --git";
-      ll = "eza --icons -lh --git";
-      la = "eza --icons -lah --git";
-      tree = "eza --tree --icons";
-      vim = "nvim";
-      ping = "prettyping --nolegend";
-    };
+    shellAliases =
+      let
+        commonAliases = {
+          l = "eza -lh --icons --git";
+          ls = "eza --icons -G";
+          lsa = "eza --icons -lah --git";
+          ll = "eza --icons -lh --git";
+          la = "eza --icons -lah --git";
+          tree = "eza --tree --icons";
+          vim = "nvim";
+          ping = "prettyping --nolegend";
+          humanlog = "humanlog --skip-unchanged=false --truncate=false";
+        };
+        workAliases =
+          if hostname == "archimedes" then
+            {
+              ktest = "kubectl --context infraapi-test";
+              kprod = "kubectl --context infraapi-prod";
+            }
+          else
+            { };
+      in
+      commonAliases // workAliases;
 
-    localVariables = {
-      ZSH_CACHE_DIR = "$HOME/Library/Caches/antidote";
-    };
+    localVariables =
+      let
+        commonVariables = {
+          ZSH_CACHE_DIR = "$HOME/Library/Caches/antidote";
+        };
+        workVariables =
+          if hostname == "archimedes" then
+            {
+              KUBECACHEDIR = "$HOME/Library/Caches/kubectl";
+            }
+          else
+            { };
+      in
+      commonVariables // workVariables;
 
     initExtraBeforeCompInit = ''
       export ZSH_CACHE_DIR
@@ -24,7 +49,7 @@
     '';
 
     initExtra = ''
-      . "/etc/profiles/per-user/${config.users.users.ivan.name}/etc/profile.d/grc.sh"
+      . "/etc/profiles/per-user/${username}/etc/profile.d/grc.sh"
 
       cat() { bat --paging never --plain --plain "$@" }
 
