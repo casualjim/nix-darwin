@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -24,6 +24,8 @@
     '';
 
     initExtra = ''
+      . "/etc/profiles/per-user/${config.users.users.ivan.name}/etc/profile.d/grc.sh"
+
       cat() { bat --paging never --plain --plain "$@" }
 
       if [ $commands[direnv] ]; then
@@ -33,10 +35,13 @@
       if [ $commands[hub] ]; then
         eval "$(hub alias -s)"
       fi
+
+      if [ $commands[prettyping] ]; then
+        alias ping='prettyping --nolegend'
+      fi
     '';
 
     envExtra = ''
-      . "/etc/profiles/per-user/$USER/etc/profile.d/grc.sh"
       . "$HOME/.cargo/env"
     '';
 

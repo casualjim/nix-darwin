@@ -21,6 +21,7 @@
       nixpkgs,
       home-manager,
     }:
+
     let
       configuration =
         { pkgs, ... }:
@@ -39,6 +40,7 @@
             pkgs.direnv
             pkgs.fastfetch
             pkgs.coreutils
+            pkgs.fd
           ];
 
           # Necessary for using flakes on this system.
@@ -75,7 +77,7 @@
         };
 
       homeconfig =
-        { pkgs, ... }:
+        { config, pkgs, ... }:
         {
           # this is internal compatibility configuration
           # for home-manager, don't change this!
@@ -115,6 +117,13 @@
             prettyping
             xh
             gocryptfs
+          ];
+
+          home.sessionPath = [
+            "${config.home.homeDirectory}/go/bin"
+            "${config.home.homeDirectory}/.kube/bin"
+            "/opt/homebrew/bin"
+            "/opt/homebrew/sbin"
           ];
 
           home.sessionVariables = {
