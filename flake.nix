@@ -26,6 +26,17 @@
       commonConfiguration =
         { pkgs, ... }:
         {
+          # List packages installed in system profile. To search by name, run:
+          # $ nix-env -qaP | grep wget
+          environment.systemPackages = [
+            pkgs.curl
+            pkgs.git
+            pkgs.jq
+            pkgs.neovim
+            pkgs.zsh
+            pkgs.coreutils
+          ];
+
           # Necessary for using flakes on this system.
           nix.settings.experimental-features = "nix-command flakes";
           nix.settings.trusted-users = [
@@ -84,6 +95,13 @@
             enableZshIntegration = true;
           };
           home.packages = with pkgs; [
+            devenv
+            git
+            jq
+            nixfmt-rfc-style
+            nil
+            direnv
+            fastfetch
             starship
             curlie
             btop
@@ -102,6 +120,7 @@
             prettyping
             xh
             gocryptfs
+            nil
           ];
           home.sessionPath = [
             "${config.home.homeDirectory}/go/bin"
