@@ -17,7 +17,9 @@
       "th-ch/youtube-music"
       "yoheimuta/protolint"
     ];
-    brews = [ ];
+    brews = [
+      "humanlog"
+    ];
     casks = [
       "appflowy"
       "brave-browser"
@@ -29,7 +31,6 @@
       "font-caskaydia-cove-nerd-font"
       "font-monaspace"
       "ghostty"
-      "humanlog"
       "inkscape"
       "ledger-live"
       "macfuse"
