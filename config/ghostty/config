@@ -1,0 +1,11 @@
+background-blur-radius = 25
+background-opacity = 0.80
+cursor-style = "bar"
+# font-family = "Monaspace Neon Var"
+font-family = "Monaspace Neon"
+# font-family = "CaskaydiaCove Nerd Font Mono"
+font-size = 13
+font-thicken = false
+theme = catppuccin-mocha
+clipboard-read = allow
+clipboard-write = allow

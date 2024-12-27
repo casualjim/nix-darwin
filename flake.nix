@@ -35,6 +35,7 @@
             pkgs.neovim
             pkgs.zsh
             pkgs.coreutils
+            pkgs.devenv
           ];
 
           # Necessary for using flakes on this system.
@@ -43,7 +44,7 @@
             "root"
             "ivan"
           ];
-          
+
           home-manager.backupFileExtension = "backup";
         };
 
@@ -78,7 +79,12 @@
           username ? "ivan",
           isDarwin ? true,
         }:
-        { config, pkgs, ... }:
+        {
+          config,
+          pkgs,
+          lib,
+          ...
+        }:
         {
           home.stateVersion = "24.11";
           programs.home-manager.enable = true;
@@ -95,7 +101,6 @@
             enableZshIntegration = true;
           };
           home.packages = with pkgs; [
-            devenv
             git
             jq
             nixfmt-rfc-style
@@ -123,8 +128,8 @@
             nil
           ];
           home.sessionPath = [
-            "${config.home.homeDirectory}/go/bin"
             "${config.home.homeDirectory}/.kube/bin"
+            "${config.home.homeDirectory}/go/bin"
             "/opt/homebrew/bin"
             "/opt/homebrew/sbin"
           ];
@@ -158,6 +163,7 @@
               if isDarwin then
                 {
                   ".config/wezterm/wezterm.lua".source = ./config/wezterm/wezterm.lua;
+                  "Library/Application Support/com.mitchellh.ghostty/config".source = ./config/ghostty/config;
                 }
               else
                 { }
