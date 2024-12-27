@@ -18,7 +18,7 @@
       "yoheimuta/protolint"
     ];
     brews = [
-      "humanlog"
+      "humanlogio/tap/humanlog"
     ];
     casks = [
       "appflowy"
