@@ -116,6 +116,7 @@
             fzf
             gh
             git
+            go
             delta
             git-lfs
             hub
