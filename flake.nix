@@ -101,7 +101,6 @@
             enableZshIntegration = true;
           };
           home.packages = with pkgs; [
-            git
             jq
             nixfmt-rfc-style
             nil
