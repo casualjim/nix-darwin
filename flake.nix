@@ -35,7 +35,6 @@
             pkgs.neovim
             pkgs.zsh
             pkgs.coreutils
-            pkgs.devenv
           ];
 
           # Necessary for using flakes on this system.
