@@ -1,8 +1,8 @@
 background-blur-radius = 25
 background-opacity = 0.80
+clipboard-read = allow
+clipboard-write = allow
 cursor-style = "bar"
 font-family = "Monaspace Neon Var"
 font-size = 13
-theme = catppuccin-mocha
-clipboard-read = allow
-clipboard-write = allow
+theme = dark:catppuccin-mocha,light:catppuccin-latte
