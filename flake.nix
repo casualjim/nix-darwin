@@ -35,6 +35,14 @@
             pkgs.neovim
             pkgs.zsh
             pkgs.coreutils
+            pkgs.gcc
+            pkgs.gnumake
+            pkgs.automake
+            pkgs.autoconf
+            pkgs.libtool
+            pkgs.gnumake
+            pkgs.libiconv
+            pkgs.cmake
           ];
 
           # Necessary for using flakes on this system.
@@ -100,31 +108,58 @@
             enableZshIntegration = true;
           };
           home.packages = with pkgs; [
-            jq
-            nixfmt-rfc-style
-            nil
-            direnv
-            fastfetch
-            starship
-            curlie
-            btop
+            act
             bat
+            btop
+            coreutils
+            curlie
+            delta
+            difftastic
+            direnv
+            docker-buildx
             eza
+            fastfetch
             fd
-            ripgrep
+            ffmpeg
+            flyctl
+            fswatch
             fzf
             gh
             git
-            go
-            delta
             git-lfs
-            hub
-            difftastic
-            grc
-            prettyping
-            xh
+            glow
+            go
             gocryptfs
+            go-mockery
+            grc
+            grpcui
+            grpcurl
+            gum
+            hub
+            httpie
+            hyperfine
+            jq
+            just
+            mkcert
+            mods
+            ngrep
             nil
+            nixfmt-rfc-style
+            opencv
+            parallel
+            pigz
+            prettyping
+            pv
+            pwgen
+            ripgrep
+            runpodctl
+            sccache
+            starship
+            temporal-cli
+            tokei
+            upx
+            websocat
+            xh
           ];
           home.sessionPath = [
             "${config.home.homeDirectory}/.kube/bin"
