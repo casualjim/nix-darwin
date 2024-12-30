@@ -29,20 +29,22 @@
           # List packages installed in system profile. To search by name, run:
           # $ nix-env -qaP | grep wget
           environment.systemPackages = [
-            pkgs.curl
-            pkgs.git
-            pkgs.jq
-            pkgs.neovim
-            pkgs.zsh
-            pkgs.coreutils
-            pkgs.gcc
-            pkgs.gnumake
-            pkgs.automake
             pkgs.autoconf
-            pkgs.libtool
-            pkgs.gnumake
-            pkgs.libiconv
+            pkgs.automake
             pkgs.cmake
+            pkgs.coreutils
+            pkgs.curl
+            pkgs.gcc
+            pkgs.git
+            pkgs.gnumake
+            pkgs.gnused
+            pkgs.gnutar
+            pkgs.jq
+            pkgs.libtool
+            pkgs.libiconv
+            pkgs.neovim
+            pkgs.time
+            pkgs.zsh
           ];
 
           # Necessary for using flakes on this system.
@@ -110,7 +112,10 @@
           home.packages = with pkgs; [
             act
             bat
+            binutils
             btop
+            cargo-binstall
+            cargo-nextest
             coreutils
             curlie
             delta

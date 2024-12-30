@@ -2,7 +2,11 @@
 {
   homebrew = {
     enable = true;
-    # onActivation.cleanup = "uninstall";
+    onActivation = {
+      cleanup = "uninstall"; # uninstall unused formulae
+      autoUpdate = true; # enable auto-updates
+      upgrade = true; # enable formulae upgrades
+    };
 
     taps = [
       "bufbuild/buf"
@@ -17,9 +21,13 @@
       "th-ch/youtube-music"
       "yoheimuta/protolint"
     ];
+
     brews = [
+      "awscli"
       "humanlogio/tap/humanlog"
+      "pinentry-mac"
     ];
+
     casks = [
       "appflowy"
       "brave-browser"
@@ -33,14 +41,20 @@
       "macfuse"
       "neohtop"
       "netbird-ui"
+      "orbstack"
+      "proton-drive"
+      "proton-mail"
+      "rectangle"
+      "protonvpn"
       "signal"
       "skype"
       "telegram-desktop"
       "tuple"
       "utm"
       "visual-studio-code"
-      "wezterm"
+      "vlc"
       "whatsapp"
+      "wireshark"
       "youtube-music"
       "yubico-authenticator"
       "yubico-yubikey-manager"
