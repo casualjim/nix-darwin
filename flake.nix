@@ -42,8 +42,10 @@
             pkgs.jq
             pkgs.libtool
             pkgs.libiconv
+            pkgs.nasm
             pkgs.neovim
             pkgs.time
+            pkgs.uv
             pkgs.zsh
           ];
 

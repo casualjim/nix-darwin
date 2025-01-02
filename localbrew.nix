@@ -25,7 +25,9 @@
     brews = [
       "awscli"
       "humanlogio/tap/humanlog"
+      "libiconv"
       "pinentry-mac"
+      "filosottile/musl-cross/musl-cross"
     ];
 
     casks = [
@@ -36,6 +38,7 @@
       "font-mona-sans"
       "font-monaspace"
       "ghostty"
+      "github"
       "inkscape"
       "ledger-live"
       "macfuse"
