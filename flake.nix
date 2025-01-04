@@ -34,6 +34,7 @@
             pkgs.cmake
             pkgs.coreutils
             pkgs.curl
+            pkgs.enchant
             pkgs.gcc
             pkgs.git
             pkgs.gnumake
