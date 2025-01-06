@@ -72,6 +72,11 @@
             name = "ivan";
             home = "/Users/ivan";
           };
+          system.defaults = {
+            NSGlobalDomain = {
+              AppleFontSmoothing = 0;
+            };
+          };
         };
 
       linuxConfiguration =
