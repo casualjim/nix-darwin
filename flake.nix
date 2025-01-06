@@ -166,6 +166,7 @@
             pwgen
             ripgrep
             runpodctl
+            rustup
             sccache
             starship
             temporal-cli
