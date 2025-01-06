@@ -28,6 +28,7 @@
       "libiconv"
       "pinentry-mac"
       "filosottile/musl-cross/musl-cross"
+      "zsh" # on my work mac without this jetbrains stuff is unhappy
     ];
 
     casks = [
