@@ -117,64 +117,90 @@
             enableBashIntegration = true;
             enableZshIntegration = true;
           };
-          home.packages = with pkgs; [
-            act
-            bat
-            binutils
-            btop
-            cargo-binstall
-            cargo-nextest
-            coreutils
-            curlie
-            delta
-            difftastic
-            direnv
-            docker-buildx
-            eza
-            fastfetch
-            fd
-            ffmpeg
-            flyctl
-            fswatch
-            fzf
-            gh
-            git
-            git-lfs
-            glow
-            go
-            gocryptfs
-            go-mockery
-            grc
-            grpcui
-            grpcurl
-            gum
-            hub
-            httpie
-            hyperfine
-            jq
-            just
-            mkcert
-            mods
-            ngrep
-            nil
-            nixfmt-rfc-style
-            opencv
-            parallel
-            pigz
-            prettyping
-            pv
-            pwgen
-            ripgrep
-            runpodctl
-            rustup
-            sccache
-            starship
-            temporal-cli
-            tokei
-            upx
-            websocat
-            xh
-          ];
+          home.packages =
+            with pkgs;
+            [
+              act
+              bat
+              btop
+              cargo-binstall
+              cargo-nextest
+              coreutils
+              curlie
+              delta
+              difftastic
+              diffutils
+              direnv
+              docker-buildx
+              eza
+              fastfetch
+              fd
+              ffmpeg
+              flyctl
+              fswatch
+              fzf
+              gcc
+              gh
+              git
+              git-lfs
+              glow
+              go
+              gocryptfs
+              go-mockery
+              grc
+              grpcui
+              grpcurl
+              gum
+              hub
+              httpie
+              hyperfine
+              jq
+              just
+              mkcert
+              mods
+              ngrep
+              nil
+              nixfmt-rfc-style
+              opencv
+              parallel
+              pigz
+              pkg-config
+              prettyping
+              pv
+              pwgen
+              ripgrep
+              runpodctl
+              rustup
+              sccache
+              starship
+              temporal-cli
+              tokei
+              upx
+              websocat
+              xh
+            ]
+            ++ (
+              if hostname == "archimedes" then
+                with pkgs;
+                [
+                  golint
+                  gofumpt
+                  golangci-lint
+                  gopls
+                  goreleaser
+                  gotestsum
+                  gotestfmt
+                  gotestdox
+                  gotools
+                  govulncheck
+                  shellcheck
+                  shfmt
+                  # Add other archimedes-specific packages here
+                ]
+              else
+                [ ]
+            );
+
           home.sessionPath = [
             "${config.home.homeDirectory}/.kube/bin"
             "${config.home.homeDirectory}/go/bin"
