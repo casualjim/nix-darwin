@@ -193,6 +193,7 @@
                   gotestdox
                   gotools
                   govulncheck
+                  pyenv
                   shellcheck
                   shfmt
                   # Add other archimedes-specific packages here
