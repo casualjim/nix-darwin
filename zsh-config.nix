@@ -50,7 +50,7 @@
 
     initExtra = ''
       . "${pkgs.grc}/etc/profile.d/grc.sh"
-      
+
       cat() { bat --paging never --plain --plain "$@" }
 
       if [ $commands[direnv] ]; then

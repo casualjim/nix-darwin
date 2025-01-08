@@ -57,6 +57,7 @@
       "utm"
       "visual-studio-code"
       "vlc"
+      "wezterm"
       "whatsapp"
       "wireshark"
       "youtube-music"

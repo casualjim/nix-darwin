@@ -40,6 +40,7 @@
             pkgs.gnumake
             pkgs.gnused
             pkgs.gnutar
+            pkgs.inetutils
             pkgs.jq
             pkgs.libtool
             pkgs.libiconv
@@ -66,17 +67,36 @@
           security.pam.enableSudoTouchIdAuth = true;
           system.stateVersion = 5;
           nixpkgs.hostPlatform = "aarch64-darwin";
-          imports = [ ./localbrew.nix ];
+
+          imports = [
+            ./localbrew.nix
+            ./darwin-env.nix
+          ];
+
           programs.zsh.enable = true;
+
           users.users.ivan = {
             name = "ivan";
             home = "/Users/ivan";
           };
+
           system.defaults = {
             NSGlobalDomain = {
               AppleFontSmoothing = 0;
             };
           };
+
+          environment.extraInit = ''
+            export NIX_LDFLAGS="-L${pkgs.libiconv}/lib -liconv $NIX_LDFLAGS"
+          '';
+
+          environment.systemPackages = with pkgs; [
+            darwin.apple_sdk.frameworks.CoreServices
+            darwin.apple_sdk.frameworks.CoreFoundation
+            darwin.apple_sdk.frameworks.Security
+            darwin.apple_sdk.frameworks.SystemConfiguration
+          ];
+
         };
 
       linuxConfiguration =
