@@ -176,6 +176,7 @@
               hyperfine
               jq
               just
+              mise
               mkcert
               mods
               ngrep

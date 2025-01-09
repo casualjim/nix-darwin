@@ -64,6 +64,10 @@
       if [ $commands[prettyping] ]; then
         alias ping='prettyping --nolegend'
       fi
+
+      if [ $commands[mise] ]; then
+        eval "$(/etc/profiles/per-user/ivan/bin/mise activate zsh)"
+      fi
     '';
 
     envExtra = ''
