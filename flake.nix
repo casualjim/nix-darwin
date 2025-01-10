@@ -151,6 +151,7 @@
               difftastic
               diffutils
               direnv
+              dive
               docker-buildx
               eza
               fastfetch
