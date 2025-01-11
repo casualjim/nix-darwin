@@ -38,6 +38,7 @@
       "dropbox"
       "font-mona-sans"
       "font-monaspace"
+      "font-sf-pro"
       "ghostty"
       "github"
       "inkscape"
