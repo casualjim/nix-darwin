@@ -32,7 +32,6 @@
     ];
 
     casks = [
-      "appflowy"
       "brave-browser"
       "discord"
       "dropbox"
