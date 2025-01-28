@@ -46,6 +46,7 @@
             pkgs.libiconv
             pkgs.nasm
             pkgs.neovim
+            pkgs.nodejs_20
             pkgs.time
             pkgs.uv
             pkgs.zsh
@@ -85,10 +86,6 @@
               AppleFontSmoothing = 0;
             };
           };
-
-          environment.extraInit = ''
-            export NIX_LDFLAGS="-L${pkgs.libiconv}/lib -liconv $NIX_LDFLAGS"
-          '';
 
           environment.systemPackages = with pkgs; [
             darwin.apple_sdk.frameworks.CoreServices
