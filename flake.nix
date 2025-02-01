@@ -50,6 +50,7 @@
             pkgs.time
             pkgs.uv
             pkgs.zsh
+            pkgs.logdy
           ];
 
           # Necessary for using flakes on this system.
