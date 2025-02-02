@@ -40,7 +40,6 @@
             pkgs.gnumake
             pkgs.gnused
             pkgs.gnutar
-            pkgs.inetutils
             pkgs.jq
             pkgs.libtool
             pkgs.libiconv
