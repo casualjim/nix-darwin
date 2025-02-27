@@ -31,6 +31,7 @@
           environment.systemPackages = [
             pkgs.autoconf
             pkgs.automake
+            pkgs.bun
             pkgs.cmake
             pkgs.coreutils
             pkgs.curl
