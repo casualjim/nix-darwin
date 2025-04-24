@@ -47,6 +47,7 @@
             pkgs.nasm
             pkgs.neovim
             pkgs.nodejs_20
+            pkgs.nvm
             pkgs.time
             pkgs.uv
             pkgs.zsh
@@ -181,6 +182,7 @@
               ngrep
               nil
               nixfmt-rfc-style
+              nodejs_22
               opencv
               parallel
               pigz
