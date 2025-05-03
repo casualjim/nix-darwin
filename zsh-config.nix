@@ -17,8 +17,16 @@
           ping = "prettyping --nolegend";
           humanlog = "humanlog --skip-unchanged=false --truncate=false";
         };
+        workAliases =
+          if hostname == "archimedes" then
+            {
+              ktest = "kubectl --context infraapi-test";
+              kprod = "kubectl --context infraapi-prod";
+            }
+          else
+            { };
       in
-      commonAliases 
+      commonAliases // workAliases;
 
     localVariables =
       let
