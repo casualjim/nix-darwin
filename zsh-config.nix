@@ -17,16 +17,8 @@
           ping = "prettyping --nolegend";
           humanlog = "humanlog --skip-unchanged=false --truncate=false";
         };
-        workAliases =
-          if hostname == "archimedes" then
-            {
-              ktest = "kubectl --context infraapi-test";
-              kprod = "kubectl --context infraapi-prod";
-            }
-          else
-            { };
       in
-      commonAliases // workAliases;
+      commonAliases 
 
     localVariables =
       let
@@ -86,6 +78,7 @@
       enable = true;
       plugins = [
         "zsh-users/zsh-completions"
+        "zsh-users/zsh-autosuggestions"
         "ohmyzsh/ohmyzsh path:lib"
         "ohmyzsh/ohmyzsh path:plugins/git"
         "ohmyzsh/ohmyzsh path:plugins/macos"
